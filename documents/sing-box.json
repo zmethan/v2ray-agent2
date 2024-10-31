@@ -122,8 +122,7 @@
       "tag": "默认",
       "outbounds": [
         "测速最快"
-      ],
-      "default": "测速最快"
+      ]
     },
     {
       "type": "selector",

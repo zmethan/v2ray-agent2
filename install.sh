@@ -661,9 +661,9 @@ allowPort() {
     # 如果防火墙启动状态则添加相应的开放端口
     if systemctl status netfilter-persistent 2>/dev/null | grep -q "active (exited)"; then
         local updateFirewalldStatus=
-        if ! iptables -L | grep -q "$1/${type}(mack-a)"; then
+        if ! iptables -L | grep -q "$1/${type}(zmethan)"; then
             updateFirewalldStatus=true
-            iptables -I INPUT -p ${type} --dport "$1" -m comment --comment "allow $1/${type}(mack-a)" -j ACCEPT
+            iptables -I INPUT -p ${type} --dport "$1" -m comment --comment "allow $1/${type}(zmethan)" -j ACCEPT
         fi
 
         if echo "${updateFirewalldStatus}" | grep -q "true"; then
@@ -2040,9 +2040,9 @@ nginxBlog() {
             #  randomNum=$((RANDOM % 6 + 1))
             randomNum=$(randomNum 1 9)
             if [[ "${release}" == "alpine" ]]; then
-                wget -q -P "${nginxStaticPath}" "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${randomNum}.zip"
+                wget -q -P "${nginxStaticPath}" "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/fodder/blog/unable/html${randomNum}.zip"
             else
-                wget -q "${wgetShowProgressStatus}" -P "${nginxStaticPath}" "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${randomNum}.zip"
+                wget -q "${wgetShowProgressStatus}" -P "${nginxStaticPath}" "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/fodder/blog/unable/html${randomNum}.zip"
             fi
 
             unzip -o "${nginxStaticPath}html${randomNum}.zip" -d "${nginxStaticPath}" >/dev/null
@@ -2055,9 +2055,9 @@ nginxBlog() {
         rm -rf "${nginxStaticPath}*"
 
         if [[ "${release}" == "alpine" ]]; then
-            wget -q -P "${nginxStaticPath}" "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${randomNum}.zip"
+            wget -q -P "${nginxStaticPath}" "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/fodder/blog/unable/html${randomNum}.zip"
         else
-            wget -q "${wgetShowProgressStatus}" -P "${nginxStaticPath}" "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${randomNum}.zip"
+            wget -q "${wgetShowProgressStatus}" -P "${nginxStaticPath}" "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/fodder/blog/unable/html${randomNum}.zip"
         fi
 
         unzip -o "${nginxStaticPath}html${randomNum}.zip" -d "${nginxStaticPath}" >/dev/null
@@ -3249,9 +3249,9 @@ hysteriaPortHopping() {
             hysteriaPortHopping
         else
             echoContent green "\n端口范围: ${hysteriaPortHoppingRange}\n"
-            iptables -t nat -A PREROUTING -p udp --dport "${portStart}:${portEnd}" -m comment --comment "mack-a_hysteria2_portHopping" -j DNAT --to-destination :${hysteriaPort}
+            iptables -t nat -A PREROUTING -p udp --dport "${portStart}:${portEnd}" -m comment --comment "zmethan_hysteria2_portHopping" -j DNAT --to-destination :${hysteriaPort}
 
-            if iptables-save | grep -q "mack-a_hysteria2_portHopping"; then
+            if iptables-save | grep -q "zmethan_hysteria2_portHopping"; then
                 allowPort "${portStart}:${portEnd}" udp
                 echoContent green " ---> 端口跳跃添加成功"
             else
@@ -3264,9 +3264,9 @@ hysteriaPortHopping() {
 # 读取端口跳跃的配置
 readHysteriaPortHopping() {
     if [[ -n "${hysteriaPort}" ]]; then
-        if iptables-save | grep -q "mack-a_hysteria2_portHopping"; then
+        if iptables-save | grep -q "zmethan_hysteria2_portHopping"; then
             portHopping=
-            portHopping=$(iptables-save | grep "mack-a_hysteria2_portHopping" | cut -d " " -f 8)
+            portHopping=$(iptables-save | grep "zmethan_hysteria2_portHopping" | cut -d " " -f 8)
             portHoppingStart=$(echo "${portHopping}" | cut -d ":" -f 1)
             portHoppingEnd=$(echo "${portHopping}" | cut -d ":" -f 2)
         fi
@@ -3275,7 +3275,7 @@ readHysteriaPortHopping() {
 
 # 删除hysteria2 端口跳跃iptables规则
 deleteHysteriaPortHoppingRules() {
-    iptables -t nat -L PREROUTING --line-numbers | grep "mack-a_hysteria2_portHopping" | awk '{print $1}' | while read -r line; do
+    iptables -t nat -L PREROUTING --line-numbers | grep "zmethan_hysteria2_portHopping" | awk '{print $1}' | while read -r line; do
         iptables -t nat -D PREROUTING 1
     done
 }
@@ -5740,9 +5740,9 @@ updateNginxBlog() {
         rm -rf "${nginxStaticPath}*"
 
         if [[ "${release}" == "alpine" ]]; then
-            wget -q -P "${nginxStaticPath}" "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip"
+            wget -q -P "${nginxStaticPath}" "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip"
         else
-            wget -q "${wgetShowProgressStatus}" -P "${nginxStaticPath}" "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip"
+            wget -q "${wgetShowProgressStatus}" -P "${nginxStaticPath}" "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip"
         fi
 
         unzip -o "${nginxStaticPath}html${selectInstallNginxBlogType}.zip" -d "${nginxStaticPath}" >/dev/null
@@ -6336,9 +6336,9 @@ updateV2RayAgent() {
     echoContent skyBlue "\n进度  $1/${totalProgress} : 更新v2ray-agent脚本"
     rm -rf /etc/v2ray-agent/install.sh
     if [[ "${release}" == "alpine" ]]; then
-        wget -c -q -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh"
+        wget -c -q -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/install.sh"
     else
-        wget -c -q "${wgetShowProgressStatus}" -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh"
+        wget -c -q "${wgetShowProgressStatus}" -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/install.sh"
     fi
 
     sudo chmod 700 /etc/v2ray-agent/install.sh
@@ -6349,7 +6349,7 @@ updateV2RayAgent() {
     echoContent yellow " ---> 请手动执行[vasma]打开脚本"
     echoContent green " ---> 当前版本：${version}\n"
     echoContent yellow "如更新不成功，请手动执行下面命令\n"
-    echoContent skyBlue "wget -P /root -N --no-check-certificate https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh && chmod 700 /root/install.sh && /root/install.sh"
+    echoContent skyBlue "wget -P /root -N --no-check-certificate https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/install.sh && chmod 700 /root/install.sh && /root/install.sh"
     echo
     exit 0
 }
@@ -6479,7 +6479,7 @@ EOF
 # 脚本快捷方式
 aliasInstall() {
 
-    if [[ -f "$HOME/install.sh" ]] && [[ -d "/etc/v2ray-agent" ]] && grep <"$HOME/install.sh" -q "作者:mack-a"; then
+    if [[ -f "$HOME/install.sh" ]] && [[ -d "/etc/v2ray-agent" ]] && grep <"$HOME/install.sh" -q "作者:zmethan"; then
         mv "$HOME/install.sh" /etc/v2ray-agent/install.sh
         local vasmaType=
         if [[ -d "/usr/bin/" ]]; then
@@ -8686,16 +8686,16 @@ proxy-groups:
     use:
       - ${subscribeSalt}_provider
     proxies:
-      - 手动切换
       - 自动选择
+      - 手动切换
 
   - name: 流媒体
     type: select
     use:
       - ${subscribeSalt}_provider
     proxies:
-      - 手动切换
       - 自动选择
+      - 手动切换
       - DIRECT
   - name: DNS_Proxy
     type: select
@@ -8710,23 +8710,23 @@ proxy-groups:
     use:
       - ${subscribeSalt}_provider
     proxies:
-      - 手动切换
       - 自动选择
+      - 手动切换
   - name: Google
     type: select
     use:
       - ${subscribeSalt}_provider
     proxies:
-      - 手动切换
       - 自动选择
+      - 手动切换
       - DIRECT
   - name: YouTube
     type: select
     use:
       - ${subscribeSalt}_provider
     proxies:
-      - 手动切换
       - 自动选择
+      - 手动切换
   - name: Netflix
     type: select
     use:
@@ -8785,8 +8785,8 @@ proxy-groups:
     use:
       - ${subscribeSalt}_provider
     proxies:
-      - 手动切换
       - 自动选择
+      - 手动切换
       - DIRECT
 
   - name: 国内媒体
@@ -9088,9 +9088,9 @@ subscribe() {
 
                         echoContent skyBlue " ---> 下载 sing-box 通用配置文件"
                         if [[ "${release}" == "alpine" ]]; then
-                            wget -O "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" -q "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/documents/sing-box.json"
+                            wget -O "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" -q "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/documents/sing-box.json"
                         else
-                            wget -O "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" -q "${wgetShowProgressStatus}" "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/documents/sing-box.json"
+                            wget -O "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" -q "${wgetShowProgressStatus}" "https://raw.githubusercontent.com/zmethan/v2ray-agent2/master/documents/sing-box.json"
                         fi
 
                         jq ".outbounds=$(jq ".outbounds|map(if has(\"outbounds\") then .outbounds += $(jq ".|map(.tag)" "/etc/v2ray-agent/subscribe_local/sing-box/${email}") else . end)" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}")" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" >"/etc/v2ray-agent/subscribe/sing-box/${emailMd5}_tmp" && mv "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}_tmp" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}"
@@ -9153,7 +9153,7 @@ updateRemoteSubscribe() {
         default=$(curl -s -4 "${subscribeType}://${remoteUrl}/s/default/${emailMD5}")
 
         if ! echo "${default}" | grep -q "nginx" && [[ -n "${default}" ]]; then
-            default=$(echo "${default}" | base64 -d | sed "s/#${email}/#${email}_${serverAlias}/g")
+            default=$(echo "${default}" | base64 -d | sed "s/#${email}/#${serverAlias}/g")
             echo "${default}" >>"/etc/v2ray-agent/subscribe/default/${emailMD5}"
 
             echoContent green " ---> 通用订阅 ${remoteUrl}:${email} 更新成功"
@@ -9686,9 +9686,9 @@ singBoxVersionManageMenu() {
 menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
-    echoContent green "作者：mack-a"
+    echoContent green "作者：zmethan"
     echoContent green "当前版本：v3.3.19"
-    echoContent green "Github：https://github.com/mack-a/v2ray-agent"
+    echoContent green "Github：https://github.com/zmethan/v2ray-agent2"
     echoContent green "描述：八合一共存脚本\c"
     showInstallStatus
     checkWgetShowProgress

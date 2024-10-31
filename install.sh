@@ -9692,12 +9692,13 @@ menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
     echoContent green "作者：zmethan"
-    echoContent green "当前版本：v3.3.19"
+    echoContent green "当前版本：v1.0.1"
     echoContent green "Github：https://github.com/zmethan/v2ray-agent2"
-    echoContent green "描述：八合一共存脚本\c"
+    echoContent green "描述：八合一共存脚本 修改版\c"
     showInstallStatus
     checkWgetShowProgress
     echoContent red "\n=========================== 推广区============================"
+    echoContent red "\n原版：https://github.com/mack-a/v2ray-agent"
     echoContent red "                                              "
     echoContent green "VPS选购攻略：https://www.v2ray-agent.com/archives/1679975663984"
     echoContent green "年付10美金低价VPS AS4837：https://www.v2ray-agent.com/archives/racknerdtao-can-zheng-li-nian-fu-10mei-yuan"

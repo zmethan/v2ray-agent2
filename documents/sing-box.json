@@ -111,8 +111,7 @@
     {
       "type": "urltest",
       "tag": "自动选择",
-      "outbounds": [
-      ],
+      "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "3m",
       "tolerance": 50,
@@ -121,8 +120,7 @@
     {
       "type": "selector",
       "tag": "手动切换",
-      "outbounds": [
-      ]
+      "outbounds": []
     },
     {
       "type": "selector",
@@ -337,7 +335,7 @@
       {
         "rule_set": [
           "geosite-private",
-          "geoip-private",
+          "geoip-private"
         ],
         "outbound": "内网IP和保留IP"
       },

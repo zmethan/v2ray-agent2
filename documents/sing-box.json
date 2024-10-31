@@ -128,40 +128,40 @@
       "type": "selector",
       "tag": "Telegram",
       "outbounds": [
-        "手动切换",
-        "自动选择"
+        "自动选择",
+        "手动切换"
       ]
     },
     {
       "type": "selector",
       "tag": "YouTube",
       "outbounds": [
-        "手动切换",
-        "自动选择"
+        "自动选择",
+        "手动切换"
       ]
     },
     {
       "type": "selector",
       "tag": "netflix",
       "outbounds": [
-        "手动切换",
-        "自动选择"
+        "自动选择",
+        "手动切换"
       ]
     },
     {
       "type": "selector",
       "tag": "OpenAI",
       "outbounds": [
-        "手动切换",
-        "自动选择"
+        "自动选择",
+        "手动切换"
       ]
     },
     {
       "type": "selector",
       "tag": "Apple",
       "outbounds": [
-        "手动切换",
         "自动选择",
+        "手动切换"
         "direct"
       ]
     },
@@ -169,16 +169,16 @@
       "type": "selector",
       "tag": "Google",
       "outbounds": [
-        "手动切换",
-        "自动选择"
+        "自动选择",
+        "手动切换"
       ]
     },
     {
       "type": "selector",
       "tag": "Microsoft",
       "outbounds": [
-        "手动切换",
         "自动选择",
+        "手动切换",
         "direct"
       ]
     },
@@ -186,8 +186,8 @@
       "type": "selector",
       "tag": "Github",
       "outbounds": [
-        "手动切换",
         "自动选择",
+        "手动切换",
         "direct"
       ]
     },
@@ -196,8 +196,18 @@
       "tag": "本地直连",
       "outbounds": [
         "direct",
-        "手动切换",
-        "自动选择"
+        "自动选择",
+        "手动切换"
+      ],
+      "default": "direct"
+    },
+    {
+      "type": "selector",
+      "tag": "中国网站-中国IP",
+      "outbounds": [
+        "direct",
+        "自动选择",
+        "手动切换"
       ],
       "default": "direct"
     },
@@ -439,11 +449,16 @@
       {
         "rule_set": [
           "geosite-private",
-          "geosite-cn",
           "geoip-private",
-          "geoip-cn"
         ],
         "outbound": "本地直连"
+      }
+      {
+        "rule_set": [
+          "geosite-cn",
+          "geoip-cn"
+        ],
+        "outbound": "中国网站-中国IP"
       }
     ],
     "final": "本地直连",

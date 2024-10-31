@@ -126,74 +126,7 @@
     },
     {
       "type": "selector",
-      "tag": "Telegram",
-      "outbounds": [
-        "自动选择",
-        "手动切换"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "YouTube",
-      "outbounds": [
-        "自动选择",
-        "手动切换"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "netflix",
-      "outbounds": [
-        "自动选择",
-        "手动切换"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "OpenAI",
-      "outbounds": [
-        "自动选择",
-        "手动切换"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "Apple",
-      "outbounds": [
-        "自动选择",
-        "手动切换"
-        "direct"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "Google",
-      "outbounds": [
-        "自动选择",
-        "手动切换"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "Microsoft",
-      "outbounds": [
-        "自动选择",
-        "手动切换",
-        "direct"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "Github",
-      "outbounds": [
-        "自动选择",
-        "手动切换",
-        "direct"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "本地直连",
+      "tag": "内网IP和保留IP",
       "outbounds": [
         "direct",
         "自动选择",
@@ -365,11 +298,11 @@
     "rules": [
       {
         "clash_mode": "global",
-        "outbound": "手动切换"
+        "outbound": "自动选择"
       },
       {
         "clash_mode": "direct",
-        "outbound": "本地直连"
+        "outbound": "内网IP和保留IP"
       },
       {
         "protocol": "dns",
@@ -398,51 +331,6 @@
         "outbound": "block"
       },
       {
-        "rule_set": [
-          "geosite-telegram",
-          "geoip-telegram"
-        ],
-        "outbound": "Telegram"
-      },
-      {
-        "rule_set": "geosite-youtube",
-        "outbound": "YouTube"
-      },
-      {
-        "rule_set": [
-          "geosite-netflix",
-          "geoip-netflix"
-        ],
-        "outbound": "netflix"
-      },
-      {
-        "rule_set": "geosite-openai@ads",
-        "outbound": "block"
-      },
-      {
-        "rule_set": "geosite-openai",
-        "outbound": "OpenAI"
-      },
-      {
-        "rule_set": "geosite-apple",
-        "outbound": "Apple"
-      },
-      {
-        "rule_set": [
-          "geosite-google",
-          "geoip-google"
-        ],
-        "outbound": "Google"
-      },
-      {
-        "rule_set": "geosite-microsoft",
-        "outbound": "Microsoft"
-      },
-      {
-        "rule_set": "geosite-github",
-        "outbound": "Github"
-      },
-      {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "手动切换"
       },
@@ -451,8 +339,8 @@
           "geosite-private",
           "geoip-private",
         ],
-        "outbound": "本地直连"
-      }
+        "outbound": "内网IP和保留IP"
+      },
       {
         "rule_set": [
           "geosite-cn",
@@ -461,7 +349,7 @@
         "outbound": "中国网站-中国IP"
       }
     ],
-    "final": "本地直连",
+    "final": "内网IP和保留IP",
     "auto_detect_interface": true
   }
 }

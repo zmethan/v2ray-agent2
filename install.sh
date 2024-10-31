@@ -8979,8 +8979,13 @@ initRandomSalt() {
 # 订阅
 subscribe() {
     readInstallProtocolType
-    installSubscribe
-
+    read -p "是否需跳过新版订阅服务器检测（如检测到订阅服务器没有使用单独端口，会执行重装）？[Y/n] " yn
+	[ -z "${yn}" ] && yn="y"
+        if [[ $yn == [Yy] ]]; then
+		echo "跳过新版订阅服务器检测"
+ 	else
+  		installSubscribe
+        fi
     readNginxSubscribe
     local renewSalt=$1
     local showStatus=$2

@@ -136,7 +136,7 @@
     },
     {
       "type": "selector",
-      "tag": "去广告",
+      "tag": "广告",
       "outbounds": [
         "block",
         "直连不代理",

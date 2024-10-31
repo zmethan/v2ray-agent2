@@ -30,7 +30,7 @@
         "address": "h3://dns.alidns.com/dns-query",
         "address_resolver": "dns_resolver",
         "strategy": "ipv4_only",
-        "detour": "direct"
+        "detour": "直连不代理"
       },
       {
         "tag": "google",
@@ -44,7 +44,7 @@
         "tag": "dns_resolver",
         "address": "114.114.114.114",
         "strategy": "ipv4_only",
-        "detour": "direct"
+        "detour": "直连不代理"
       }
     ],
     "rules": [
@@ -128,18 +128,19 @@
       "type": "selector",
       "tag": "国内",
       "outbounds": [
-        "direct",
+        "直连不代理",
         "测速最快",
         "默认"
       ],
-      "default": "direct"
+      "default": "直连不代理"
     },
     {
       "type": "selector",
       "tag": "去广告",
       "outbounds": [
         "block",
-        "direct"
+        "直连不代理",
+        "测速最快"
       ],
       "default": "block"
     },
@@ -147,14 +148,14 @@
       "type": "selector",
       "tag": "内网IP和保留IP",
       "outbounds": [
-        "direct",
+        "直连不代理",
         "测速最快",
         "默认"
       ],
-      "default": "direct"
+      "default": "直连不代理"
     },
     {
-      "tag": "direct",
+      "tag": "直连不代理",
       "type": "direct"
     },
     {
@@ -218,7 +219,7 @@
       },
       {
         "clash_mode": "direct",
-        "outbound": "direct"
+        "outbound": "直连不代理"
       },
       {
         "protocol": "dns",

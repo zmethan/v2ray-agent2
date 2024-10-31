@@ -9,7 +9,7 @@
       "external_controller": "127.0.0.1:9090",
       "external_ui": "metacubexd",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-      "external_ui_download_detour": "手动切换",
+      "external_ui_download_detour": "默认",
       "default_mode": "rule"
     },
     "cache_file": {
@@ -23,7 +23,7 @@
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_resolver",
         "strategy": "ipv4_only",
-        "detour": "手动切换"
+        "detour": "默认"
       },
       {
         "tag": "dns_direct",
@@ -119,8 +119,11 @@
     },
     {
       "type": "selector",
-      "tag": "手动切换",
-      "outbounds": []
+      "tag": "默认",
+      "outbounds": [
+        "自动选择"
+      ]，
+      "default": "自动选择"
     },
     {
       "type": "selector",
@@ -128,7 +131,7 @@
       "outbounds": [
         "direct",
         "自动选择",
-        "手动切换"
+        "默认"
       ],
       "default": "direct"
     },
@@ -137,7 +140,7 @@
       "tag": "国外",
       "outbounds": [
         "自动选择",
-        "手动切换",
+        "默认",
         "direct"
       ],
       "default": "自动选择"
@@ -148,7 +151,7 @@
       "outbounds": [
         "direct",
         "自动选择",
-        "手动切换"
+        "默认"
       ],
       "default": "direct"
     },
@@ -306,7 +309,7 @@
     "rules": [
       {
         "clash_mode": "global",
-        "outbound": "手动切换"
+        "outbound": "默认"
       },
       {
         "clash_mode": "direct",
@@ -357,7 +360,7 @@
         "outbound": "国内"
       }
     ],
-    "final": "国外",
+    "final": "默认",
     "auto_detect_interface": true
   }
 }

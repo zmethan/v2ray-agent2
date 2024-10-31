@@ -306,7 +306,7 @@
     "rules": [
       {
         "clash_mode": "global",
-        "outbound": "自动选择"
+        "outbound": "手动切换"
       },
       {
         "clash_mode": "direct",
@@ -357,7 +357,7 @@
         "outbound": "国内"
       }
     ],
-    "final": "内网IP和保留IP",
+    "final": "国外",
     "auto_detect_interface": true
   }
 }

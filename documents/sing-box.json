@@ -110,7 +110,7 @@
   "outbounds": [
     {
       "type": "urltest",
-      "tag": "自动选择",
+      "tag": "测速最快",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "3m",
@@ -121,16 +121,16 @@
       "type": "selector",
       "tag": "默认",
       "outbounds": [
-        "自动选择"
+        "测速最快"
       ],
-      "default": "自动选择"
+      "default": "测速最快"
     },
     {
       "type": "selector",
       "tag": "内网IP和保留IP",
       "outbounds": [
         "direct",
-        "自动选择",
+        "测速最快",
         "默认"
       ],
       "default": "direct"
@@ -140,7 +140,7 @@
       "tag": "国内",
       "outbounds": [
         "direct",
-        "自动选择",
+        "测速最快",
         "默认"
       ],
       "default": "direct"

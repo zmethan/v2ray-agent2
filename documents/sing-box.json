@@ -134,7 +134,17 @@
     },
     {
       "type": "selector",
-      "tag": "中国网站-中国IP",
+      "tag": "国外",
+      "outbounds": [
+        "自动选择",
+        "手动切换"，
+        "direct",
+      ],
+      "default": "自动选择"
+    },
+    {
+      "type": "selector",
+      "tag": "国内",
       "outbounds": [
         "direct",
         "自动选择",
@@ -330,7 +340,7 @@
       },
       {
         "rule_set": "geosite-geolocation-!cn",
-        "outbound": "手动切换"
+        "outbound": "国外"
       },
       {
         "rule_set": [
@@ -344,7 +354,7 @@
           "geosite-cn",
           "geoip-cn"
         ],
-        "outbound": "中国网站-中国IP"
+        "outbound": "国内"
       }
     ],
     "final": "内网IP和保留IP",

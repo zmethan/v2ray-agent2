@@ -127,16 +127,6 @@
     },
     {
       "type": "selector",
-      "tag": "内网IP和保留IP",
-      "outbounds": [
-        "direct",
-        "测速最快",
-        "默认"
-      ],
-      "default": "direct"
-    },
-    {
-      "type": "selector",
       "tag": "国内",
       "outbounds": [
         "direct",
@@ -153,6 +143,16 @@
         "direct"
       ],
       "default": "block"
+    },
+    {
+      "type": "selector",
+      "tag": "内网IP和保留IP",
+      "outbounds": [
+        "direct",
+        "测速最快",
+        "默认"
+      ],
+      "default": "direct"
     },
     {
       "tag": "direct",

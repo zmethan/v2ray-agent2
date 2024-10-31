@@ -9145,7 +9145,7 @@ updateRemoteSubscribe() {
         fi
         local clashMetaProxies=
 
-        clashMetaProxies=$(curl -s -4 "${subscribeType}://${remoteUrl}/s/clashMeta/${emailMD5}" | sed '/proxies:/d' | sed "s/\"${email}/\"${email}_${serverAlias}/g")
+        clashMetaProxies=$(curl -s -4 "${subscribeType}://${remoteUrl}/s/clashMeta/${emailMD5}" | sed '/proxies:/d' | sed "s/\"${email}/\"${serverAlias}/g")
 
         if ! echo "${clashMetaProxies}" | grep -q "nginx" && [[ -n "${clashMetaProxies}" ]]; then
             echo "${clashMetaProxies}" >>"/etc/v2ray-agent/subscribe/clashMeta/${emailMD5}"
@@ -9170,7 +9170,7 @@ updateRemoteSubscribe() {
         singBoxSubscribe=$(curl -s -4 "${subscribeType}://${remoteUrl}/s/sing-box_profiles/${emailMD5}")
 
         if ! echo "${singBoxSubscribe}" | grep -q "nginx" && [[ -n "${singBoxSubscribe}" ]]; then
-            singBoxSubscribe=${singBoxSubscribe//tag\": \"${email}/tag\": \"${email}_${serverAlias}}
+            singBoxSubscribe=${singBoxSubscribe//tag\": \"${email}/tag\": \"${serverAlias}}
             singBoxSubscribe=$(jq ". +=${singBoxSubscribe}" "/etc/v2ray-agent/subscribe_local/sing-box/${email}")
             echo "${singBoxSubscribe}" | jq . >"/etc/v2ray-agent/subscribe_local/sing-box/${email}"
 

@@ -1664,7 +1664,13 @@ checkIP() {
             echoContent yellow " ---> 检测返回值异常，建议手动卸载nginx后重新执行脚本"
             echoContent red " ---> 异常结果：${localIP}"
         fi
-        exit 0
+	read -p "是否继续？[Y/n] " yn
+	[ -z "${yn}" ] && yn="y"
+	if [[ $yn == [Yy] ]]; then
+		echo "继续"
+	else
+	  	exit 0
+	fi
     else
         if echo "${localIP}" | awk -F "[,]" '{print $2}' | grep -q "." || echo "${localIP}" | awk -F "[,]" '{print $2}' | grep -q ":"; then
             echoContent red "\n ---> 检测到多个ip，请确认是否关闭cloudflare的云朵"
@@ -9705,7 +9711,7 @@ menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
     echoContent green "作者：zmethan"
-    echoContent green "当前版本：v1.0.3"
+    echoContent green "当前版本：v1.0.4"
     echoContent green "Github：https://github.com/zmethan/v2ray-agent2"
     echoContent green "描述：八合一共存脚本 修改版\c"
     showInstallStatus

@@ -1319,7 +1319,13 @@ checkDNSIP() {
         echoContent yellow " ---> 请检查域名解析是否生效以及正确"
         echoContent green " ---> 当前VPS IP：${publicIP}"
         echoContent green " ---> DNS解析 IP：${dnsIP}"
-        exit 0
+	read -p "是否继续？[Y/n] " yn
+	[ -z "${yn}" ] && yn="y"
+        if [[ $yn == [Yy] ]]; then
+		echo "继续"
+ 	else
+  		exit 0
+        fi
     else
         echoContent green " ---> 域名IP校验通过"
     fi

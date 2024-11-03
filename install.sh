@@ -1388,7 +1388,14 @@ EOF
                     echoContent red " ---> 错误日志：${checkPortOpenResult}，请将此错误日志通过issues提交反馈"
                 fi
             fi
-            exit 0
+	    read -p "是否继续？[Y/n] " yn
+	    [ -z "${yn}" ] && yn="y"
+	    if [[ $yn == [Yy] ]]; then
+	    	echo "继续"
+	    else
+	    	exit 0
+	    fi
+
         fi
         checkIP "${localIP}"
     fi
@@ -9698,7 +9705,7 @@ menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
     echoContent green "作者：zmethan"
-    echoContent green "当前版本：v1.0.2"
+    echoContent green "当前版本：v1.0.3"
     echoContent green "Github：https://github.com/zmethan/v2ray-agent2"
     echoContent green "描述：八合一共存脚本 修改版\c"
     showInstallStatus

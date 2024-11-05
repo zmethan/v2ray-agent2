@@ -4216,7 +4216,7 @@ EOF
 		"security": "none",
 		"wsSettings": {
 		  "acceptProxyProtocol": true,
-		  "path": "/${customPath}ws"
+		  "path": "/${customPath}"
 		}
 	  }
 	}
@@ -4625,7 +4625,7 @@ EOF
           },
           "transport": {
             "type": "ws",
-            "path": "/${currentPath}ws",
+            "path": "/${currentPath}",
             "max_early_data": 2048,
             "early_data_header_name": "Sec-WebSocket-Protocol"
           }
@@ -5395,10 +5395,10 @@ showAccounts() {
                 vlessWSPort="${singBoxVLESSWSPort}"
             fi
             echo
-            local path="${currentPath}ws"
+            local path="${currentPath}"
 
             if [[ ${coreInstallType} == "1" ]]; then
-                path="/${currentPath}ws"
+                path="/${currentPath}"
             elif [[ "${coreInstallType}" == "2" ]]; then
                 path="${singBoxVLESSWSPath}"
             fi
@@ -5430,7 +5430,7 @@ showAccounts() {
             local path="${currentPath}split"
 
             #            if [[ ${coreInstallType} == "1" ]]; then
-            #                path="/${currentPath}ws"
+            #                path="/${currentPath}"
             #            elif [[ "${coreInstallType}" == "2" ]]; then
             #                path="${singBoxVLESSWSPath}"
             #            fi
@@ -9711,7 +9711,7 @@ menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
     echoContent green "作者：zmethan"
-    echoContent green "当前版本：v1.0.4"
+    echoContent green "当前版本：v1.0.5"
     echoContent green "Github：https://github.com/zmethan/v2ray-agent2"
     echoContent green "描述：八合一共存脚本 修改版\c"
     showInstallStatus

@@ -9711,7 +9711,7 @@ menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
     echoContent green "作者：zmethan"
-    echoContent green "当前版本：v1.0.5"
+    echoContent green "当前版本：v1.0.6"
     echoContent green "Github：https://github.com/zmethan/v2ray-agent2"
     echoContent green "描述：八合一共存脚本 修改版\c"
     showInstallStatus
